@@ -30,8 +30,9 @@ public class ListenerDemo implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        String browserName = null;
         ITestListener.super.onTestFailure(result);
-        ExtentReport.getExtentTestFail("Could not find the element");
+        ExtentReport.getExtentTestFail("Could not find the element", browserName);
     }
 
     @Override

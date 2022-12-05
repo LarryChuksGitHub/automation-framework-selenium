@@ -13,7 +13,7 @@ public final class FrameworkLogger {
     private FrameworkLogger(){}
 
     private static Consumer<String> PASS = (message) -> ExtentReport.getExtentTestPass(message);
-    private static Consumer<String> FAIL = (message) -> ExtentReport.getExtentTestFail(message);
+    private static Consumer<String> FAIL = (message) -> ExtentReport.getExtentTestFail(message,"");
     private static Consumer<String> SKIP = (message) -> ExtentReport.getExtentTestSkip(message);
     private static Consumer<String> INFO = (message) -> ExtentReport.getExtentTestInfo(message);
     private static Consumer<String> PASSCONSOLE = (message) -> System.out.println(message);

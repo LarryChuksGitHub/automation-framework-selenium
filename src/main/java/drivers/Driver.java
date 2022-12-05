@@ -25,16 +25,15 @@ public final class Driver {
         if (propertyValue.equalsIgnoreCase("local")) {
         if (browser.equalsIgnoreCase("chrome")) {
                 if (isNull(BrowserDriverManager.getDriverThreadLocal())) {
-                    driver = BrowserFactory.getConfigBrowser("chrome");
+                     driver = BrowserFactory.getConfigBrowser("chrome");
                     BrowserDriverManager.setDriverThreadLocal(driver);
                     return BrowserDriverManager.getDriverThreadLocal();
                      }
                 }else if(browser.equalsIgnoreCase("firefox")){
                     if (isNull(BrowserDriverManager.getDriverThreadLocal())) {
-                        driver = BrowserFactory.getConfigBrowser("firefox");
+                       driver = BrowserFactory.getConfigBrowser("firefox");
                         BrowserDriverManager.setDriverThreadLocal(driver);
-                        BrowserDriverManager.setDriverThreadLocal(driver);
-                         return BrowserDriverManager.getDriverThreadLocal();
+                        return BrowserDriverManager.getDriverThreadLocal();
                 }
 //            case "safariX":
 //                if (isNull(BrowserDriverManager.getDriverThreadLocal())) {
@@ -52,7 +51,8 @@ public final class Driver {
     public static void quitDriver(){
         if(nonNull(BrowserDriverManager.getDriverThreadLocal()) && nonNull(driver)){
             BrowserDriverManager.getDriverThreadLocal().close();
-            driver.close();
+            //driver.close();
+            BrowserDriverManager.getDriverThreadLocal().close();
             BrowserDriverManager.getDriverThreadLocal().quit();
             BrowserDriverManager.unloadDriverThreadLocal();
         }

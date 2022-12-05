@@ -49,10 +49,11 @@ public class BasePage {
         elementName = webElement.getText() +" "+ webElement.getAttribute("name");
         webElement.click();
         //System.out.println(elementName + " was clicked");
-        //ExtentReport.getExtentTestPass(elementName +" was clicked");
+        ExtentReport.getExtentTestPass(elementName +" was clicked");
        // FrameworkLogger.log(LogType.PASS,elementName +" was clicked");
         //new ConsoleLogImpl().log("pass",elementName +" was clicked");
         FrameworkLogger.log(LogType.PASSCONSOLEANDEXTENT,elementName +" was clicked");
+
        // ExtententReportManager.getExtentThreadLocal().pass(elementName +" was clicked");
     }
     private void highlightElement(WebDriver webDriver, WebElement webElement){

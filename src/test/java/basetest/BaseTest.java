@@ -34,9 +34,9 @@ public class BaseTest {
     public static void afterMethod(ITestResult result){
         if ( result.getStatus() == ITestResult.FAILURE){
            String testName = result.getName();
-           ExtentReport.getExtentTestFail(result.getThrowable().toString() +", Element was not found, so the test: " + testName+ " failed" );
+           String browserName = null;
+           ExtentReport.getExtentTestFail(result.getThrowable().toString() +", Element was not found, so the test: " + testName+ " failed" ,browserName);
         }
-       // ExtentReport.publishReport();
 
     }
 

@@ -24,8 +24,8 @@ public final class ExtentReport {
     private  static ExtentTest report;
 
 
-    private static ExtentTest getExtentTest() {
-        return createReport("Selenium automation test report");
+    private static ExtentTest getExtentTest(String reportName) {
+        return createReport(reportName);
     }
 
     public static void configureReport(){
@@ -42,7 +42,7 @@ public final class ExtentReport {
             report = extentReports.createTest(reportName);
             ExtententReportManager.setExtentThreadLocal(report);
         }
-        return  report;
+        return  ExtententReportManager.getExtentThreadLocal();
     }
 
     public static void publishReport(){
@@ -58,22 +58,22 @@ public final class ExtentReport {
 
 
     public static String getExtentTestStart(String report){
-        report = getExtentTest().getStatus().getName();
+        report = getExtentTest(report).getStatus().getName();
         return report;
     }
     public static ExtentTest getExtentTestPass(String report){
-        return getExtentTest().pass(report);
+        return getExtentTest(report).pass(report);
     }
     public static ExtentTest getExtentTestSkip(String report){
-        return getExtentTest().skip(report);
+        return getExtentTest(report).skip(report);
     }
 
-    public static ExtentTest getExtentTestFail(String message){
-        return getExtentTest().fail(message,takeScreenshot(""));
+    public static ExtentTest getExtentTestFail(String message, String browser){
+        return getExtentTest(message).fail(message,takeScreenshot(browser));
         // return null;
     }
     public static ExtentTest getExtentTestInfo(String info){
-        return getExtentTest().info(info);
+        return getExtentTest(info).info(info);
     }
 
     public static void quitExtendReport(){

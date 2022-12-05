@@ -42,15 +42,17 @@ public final class LoginTests extends BaseTest {
 //
     @Test(dataProvider = "excelMapData", dataProviderClass = ReadDataFromExcel.class)
     public void userLoginTest2(Map<String,String> map, Method method){
-        ExtentReport.getExtentTestPass(method.getName()).assignAuthor("Larry");
+        String browser = map.get("browser");
+        ExtentReport.getExtentTestPass(method.getName()+ " "+ browser).assignAuthor("Larry");
         Arrays.toString(map.keySet().toArray());
         String username = map.get("username");
         String password = map.get("password");
-        String browser = map.get("browser");
+
         System.out.println("DataProvider uesername: " + username);
         System.out.println("DataProvider browser: " + browser);
+        String testName = method.getName() +" " +browser;
         String result =
-                new LoginFacade().naviagteToLoginPageAndDoLogin(username,password, browser, method.getName());
+                new LoginFacade().naviagteToLoginPageAndDoLogin(username,password, method.getName(), browser);
         Assertions.assertThat(result).contains("You logged into a secure area!").isNotNull().isNotEmpty().as("The result","You logged in");
 
     }
