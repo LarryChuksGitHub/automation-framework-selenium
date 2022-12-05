@@ -1,0 +1,10 @@
+#Please provide all properties in small letter
+
+#browser=chrome
+#1browser=firefox
+#2browser=safari
+retryfailedtests=yes
+
+# environment is either local or docker or cloud
+executionenvironment=local
+sendresulttoelasticsearch=no
